@@ -2,7 +2,8 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import random
-st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon" ",layout="wide")
+
+st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon"🏫",layout="wide")
 
 #----DATA YA DEMO----
 if 'df' not in st.session_state:
@@ -22,7 +23,7 @@ menu = st.sidebar.sidebarbox("Chagua Sehemu", ["Mlango wa Mzazi", "Mlango wa Mku
 
 #===SEHEMU 1: MLANGO WA MZAZI===
 if menu == "Mlango wa Mzazi":
-	st.title("UNBREAKABLE SCHOOL PAY")
+	st.title("🏫UNBREAKABLE SCHOOL PAY")
 	st.subheader("Lipa Ada yako Mtandaoni")
 	st.write("---")
 	
@@ -52,7 +53,7 @@ if menu == "Mlango wa Mzazi":
 				st.session_state.df = df
 				
 				st.balloons()
-				st.success("Malipo yamefanikiwa!")
+				st.success("Malipo yamefanikiwa!✅")
 				st.write("### RISITI: RCPT{random.randint(10000,99999)}")
 				st.write(f"**Kiasi:** Tsh {amount:, } | **Salio Jipya:** Tsh {df.at[idx, 'deni']:, }")
 				st.info(f"Risiti imetumwa kwa WhatsApp: {student['namba_mzazi'].values[0]}")
@@ -61,12 +62,12 @@ if menu == "Mlango wa Mzazi":
 	
 #====SEHEMU 2: MLANGO WA MKUU====
 elif menu == "Mlango wa Mkuu wa Shule":
-	st.title("ADMIN PANEL - Mkuu wa Shule")
+	st.title("🧑‍💼ADMIN PANEL - Mkuu wa Shule")
 	
 	password = st.text_input("Weka Password yako Mkuu", type="password")
 	if password == "admin123":
 		st.success("Karibu Mkuu!")
-		tab1, tab2, tab3 = st.tabs(["Ripot", "Tafuta Mwanafinzi", "Hariri Data"])
+		tab1, tab2, tab3 = st.tabs(["📊Ripot", "🔍Tafuta Mwanafinzi", "✏️Hariri Data"])
 		
 		with tab1:
 			st.header("Ripoti ya Jumla")
