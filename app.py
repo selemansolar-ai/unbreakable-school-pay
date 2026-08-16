@@ -31,7 +31,7 @@ if menu == "Mlango wa Mzazi":
 	
 	if student_id:
 		student = df[df['namba'] == student_id]
-		if not student empty:
+		if not student.empty:
 			st.success("Mwanafunzi amepatikana!")
 			col1, col2 = st.columns(2)
 			with col1:
