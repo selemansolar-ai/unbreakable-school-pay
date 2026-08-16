@@ -85,14 +85,15 @@ elif menu == "Mlango wa Mkuu wa Shule":
 				st.dataframe(result)			
 	    with tab3:
 			st.header("Badili Deni la Mwanafunzi")
-	   	    student_to_edit = st.selectbox("Chagua Mwanafunzi", df['namba'])
-	   	    new_debt = st.number_input("Weka Deni Jipya", value=int(df[df['namba']==student_to_edit]['deni'].values[0]))
-	   	    if st.button("Hifadhi Mabadiliko"):
+			student_to_edit = st.selectbox("Chagua Mwanafunzi", df['namba'])
+			current_debt = int(df[df['deni']==student_to_edit]['deni'].values[0])
+			new_debt = st.number_input("Weka Deni Jipya", value=int(df[df['namba']==student_to_edit]['deni'].values[0]))
+			if st.button("Hifadhi Mabadiliko"):
 				df.loc[df['namba'] == student_to_edit, 'deni'] = new_debt
-	   		    st.session_state.df = df
-	   		    st.success("Imesasishwa!")
-    elif password:
-        st.error  ("password sio Sahihi")
+				st.session_state.df = df
+				st.success("Imesasishwa!")
+			elif password:
+				st.error  ("password sio Sahihi")
 
 st.write("---")
 st.caption("System imetengenezwa na UNBREAKABLE TECH. Shule ndio msimamizi wa fedha na data zote")
