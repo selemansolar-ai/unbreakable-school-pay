@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 import random
 
-st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon"🏫", layout="wide")
+st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon="🏫", layout="wide")
 
 #----DATA YA DEMO----
 if 'df' not in st.session_state:
@@ -41,7 +41,7 @@ if menu == "Mlango wa Mzazi":
 				st.write(f"**Deni la Sasa:** Tsh {student['deni'].values[0]:, }")
 				st.write(f"**Alishalipa:** Tsh {student['malipo_yaliyofanyika'].values[0]:, }")
 			
-			amount = st.number_input("Weka Kiasi cha Kulipa", min_value=1000, max_value=student['deni'].values[0], step=5000)
+			amount = st.number_input("Weka Kiasi cha Kulipa", min_value=1000, max_value=int(student['deni'].values[0]), step=5000)
 			
 			if st.button(f"Lipa Tsh {amount:, } Sasa", type="primary"):
 				with st.spinner("Tafadhali Lipia kwa simu yako..."):
