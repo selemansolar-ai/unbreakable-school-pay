@@ -85,6 +85,7 @@ elif menu == "Mlango wa Mkuu wa Shule":
 			if search:
 				result = df[df['jina'].str.contains(search, case=False)]
 				st.dataframe(result)
+				
 	    with tab3:
 			st.header("Badili Deni la Mwanafunzi")
 	   	    student_to_edit = st.selectbox("Chagua Mwanafunzi", df['namba'])
