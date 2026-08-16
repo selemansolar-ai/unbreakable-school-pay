@@ -68,7 +68,6 @@ elif menu == "Mlango wa Mkuu wa Shule":
 	if password == "admin123":
 		st.success("Karibu Mkuu!")
 		tab1, tab2, tab3 = st.tabs(["📊Ripot", "🔍Tafuta Mwanafinzi", "✏️Hariri Data"])
-		
 		with tab1:
 			st.header("Ripoti ya Jumla")
 			total_deni = df['deni'].sum()
@@ -77,15 +76,13 @@ elif menu == "Mlango wa Mkuu wa Shule":
 			col1.metric("Jumla ya Madeni", f"Tsh {total_deni:, }")
 			col2.metric("Jumla Imelipwa", f"Tsh {total_lipwa:, }")
 			col3.metric("Wanafunzi", len(df))
-			st.DataFrame(df)
-			
+			st.DataFrame(df)			
 		with tab2:
 			st.header("Tafuta Mwanafunzi")
 			search = st.text_input("Tafuta kwa Jina au Namba")
 			if search:
 				result = df[df['jina'].str.contains(search, case=False)]
-				st.dataframe(result)
-				
+				st.dataframe(result)			
 	    with tab3:
 			st.header("Badili Deni la Mwanafunzi")
 	   	    student_to_edit = st.selectbox("Chagua Mwanafunzi", df['namba'])
@@ -94,8 +91,8 @@ elif menu == "Mlango wa Mkuu wa Shule":
 				df.loc[df['namba'] == student_to_edit, 'deni'] = new_debt
 	   		    st.session_state.df = df
 	   		    st.success("Imesasishwa!")
-   elif password:
-       st.error  ("password sio Sahihi")
+    elif password:
+        st.error  ("password sio Sahihi")
 
 st.write("---")
 st.caption("System imetengenezwa na UNBREAKABLE TECH. Shule ndio msimamizi wa fedha na data zote")
