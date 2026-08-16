@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime
 import random
 
-st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon"🏫",layout="wide")
+st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon"🏫", layout="wide")
 
 #----DATA YA DEMO----
 if 'df' not in st.session_state:
