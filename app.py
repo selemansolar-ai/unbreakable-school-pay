@@ -94,9 +94,8 @@ elif menu == "Mlango wa Mkuu wa Shule":
 				df.loc[df['namba'] == student_to_edit, 'deni'] = new_debt
 	   		    st.session_state.df = df
 	   		    st.success("Imesasishwa!")
-
-    else password:
-        st.error  ("password sio Sahihi")
+   elif password:
+       st.error  ("password sio Sahihi")
 
 st.write("---")
 st.caption("System imetengenezwa na UNBREAKABLE TECH. Shule ndio msimamizi wa fedha na data zote")
