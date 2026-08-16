@@ -95,8 +95,8 @@ elif menu == "Mlango wa Mkuu wa Shule":
 	   		    st.session_state.df = df
 	   		    st.success("Imesasishwa!")
 
-   else password:
-   	st.error  ("password sio Sahihi")
+    else password:
+        st.error  ("password sio Sahihi")
 
 st.write("---")
 st.caption("System imetengenezwa na UNBREAKABLE TECH. Shule ndio msimamizi wa fedha na data zote")
