@@ -87,13 +87,13 @@ elif menu == "Mlango wa Mkuu wa Shule":
 				st.dataframe(result)
 				
 	   with tab3:
-	   	st.header("Badili Deni la Mwanafunzi")
-	   	student_to_edit = st.selectbox("Chagua Mwanafunzi", df['namba'])
-	   	new_debt = st.number_input("Weka Deni Jipya", value=int(df[df['namba']==student_to_edit]['deni'].values[0]))
-	   	if st.button("Hifadhi Mabadiliko"):
-	   		df.loc[df['namba'] == student_to_edit, 'deni'] = new_debt
-	   		st.session_state.df = df
-	   		st.success("Imesasishwa!")
+		   st.header("Badili Deni la Mwanafunzi")
+	   	   student_to_edit = st.selectbox("Chagua Mwanafunzi", df['namba'])
+	   	   new_debt = st.number_input("Weka Deni Jipya", value=int(df[df['namba']==student_to_edit]['deni'].values[0]))
+	   	   if st.button("Hifadhi Mabadiliko"):
+			   df.loc[df['namba'] == student_to_edit, 'deni'] = new_debt
+	   		   st.session_state.df = df
+	   		   st.success("Imesasishwa!")
 
    else password:
    	st.error  ("password sio Sahihi")
