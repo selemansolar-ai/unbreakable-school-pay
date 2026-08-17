@@ -2,9 +2,17 @@ import streamlit as st
 import pandas as pd
 from datetime import datetime
 import random
+import datetime
+from fpdf import FPDF
+import io
 
 st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon="🏫", layout="wide")
 
+# DATABASE
+if 'users' not in st.session_state:
+	st.session_state.users = {
+		'admin': {'password': 'admin123', 'type': 'Mkuu}
+	}
 #----DATA YA DEMO----
 if 'df' not in st.session_state:
 	st.session_state.df = pd.DataFrame({
@@ -18,83 +26,67 @@ if 'df' not in st.session_state:
 
 df = st.session_state.df
 
-#---MENU YA JUU---
-menu = st.sidebar.sidebarbox("Chagua Sehemu", ["Mlango wa Mzazi", "Mlango wa Mkuu wa shule"])
+# FUNCTION YA KUTENGENEZA PDF
+def tengeneza_risiti(red, jina, kiasi, salio):
+	pdf = FPDF()
+	pdf.add_page()
+	pdf.set_front("Arial", 'B', 16)
+	pdf.cell(0, 10, "UNBREAKABLE SCHOOL", 0, 1, 'C')
+	pdf.cell(0, 10, f"RISITI # : {ref}", 0, 1, 'C')
+	pdf.ln(5)
+	pdf.set_font("Arial", size=12)
+	pdf..cell(0, 10, f"Tarehe: {datetime.date.today()}", 0, 1)
+	pdf.cell(0, 10, f"Mwanafunzi: {jina}", 0, 1)
+	pdf.cell(0, 10, f"kiasi: Tsh {kiasi:, }", 0, 1)
+	pdf.cell(0, 10, f"Salio Jipya: Tsh {salio:,}", 0,1)
+	buffer = io.BytesIO()
+	pdf.output(buffer)
+	return buffer.getvalues()
 
-#===SEHEMU 1: MLANGO WA MZAZI===
-if menu == "Mlango wa Mzazi":
+# LOG IN PAGE
+if 'logged_in' not in st.session_state:
+	st.session_state.logged_in = False
+
+if not st.session_state.logged_in:
 	st.title("🏫UNBREAKABLE SCHOOL PAY")
-	st.subheader("Lipa Ada yako Mtandaoni")
-	st.write("---")
+	user_type = st.radio("Ingia kama:", ["Mzazi", "Mkuu wa Shule"])
 	
-	student_id = st.text_input("Ingiza Namba ya Mwanafunzi", " ")
-	
-	if student_id:
-		student = df[df['namba'] == student_id]
-		if not student.empty:
-			st.success("Mwanafunzi amepatikana!")
-			col1, col2 = st.columns(2)
-			with col1:
-				st.write(f"**Jina:** {student['jina'].values[0]}")
-				st.write(f"**Darasa:** {student['darasa'].values[0]}")
-			with col2:
-				st.write(f"**Deni la Sasa:** Tsh {student['deni'].values[0]:, }")
-				st.write(f"**Alishalipa:** Tsh {student['malipo_yaliyofanyika'].values[0]:, }")
-			
-			amount = st.number_input("Weka Kiasi cha Kulipa", min_value=1000, max_value=int(student['deni'].values[0]), step=5000)
-			
-			if st.button(f"Lipa Tsh {amount:, } Sasa", type="primary"):
-				with st.spinner("Tafadhali Lipia kwa simu yako..."):
-					import time; time.sleep(2)#Hapa API itaingia
-				#SASISHA DATA
-				idx = df[df['namba'] == stident_id].index[0]
-				df.at[idx, 'deni'] -= amount
-				df.at[idx, 'malipo_yaliyofanyika'] += amount
-				st.session_state.df = df
-				
-				st.balloons()
-				st.success("Malipo yamefanikiwa!✅")
-				st.write("### RISITI: RCPT{random.randint(10000,99999)}")
-				st.write(f"**Kiasi:** Tsh {amount:, } | **Salio Jipya:** Tsh {df.at[idx, 'deni']:, }")
-				st.info(f"Risiti imetumwa kwa WhatsApp: {student['namba_mzazi'].values[0]}")
-				
-	else: st.error("Namba ya Mwanafunzi haipatikani.")
-	
-#====SEHEMU 2: MLANGO WA MKUU====
-elif menu == "Mlango wa Mkuu wa Shule":
-	st.title("🧑‍💼ADMIN PANEL - Mkuu wa Shule")
-	
-	password = st.text_input("Weka Password yako Mkuu", type="password")
-	if password == "admin123":
-		st.success("Karibu Mkuu!")
-		tab1, tab2, tab3 = st.tabs(["📊Ripot", "🔍Tafuta Mwanafinzi", "✏️Hariri Data"])
-		with tab1:
-			st.header("Ripoti ya Jumla")
-			total_deni = df['deni'].sum()
-			total_lipwa = df['malipo_yaliyofanyika'].sum()
-			col1, col2, col3 = st.columns(3)
-			col1.metric("Jumla ya Madeni", f"Tsh {total_deni:, }")
-			col2.metric("Jumla Imelipwa", f"Tsh {total_lipwa:, }")
-			col3.metric("Wanafunzi", len(df))
-			st.DataFrame(df)			
-		with tab2:
-			st.header("Tafuta Mwanafunzi")
-			search = st.text_input("Tafuta kwa Jina au Namba")
-			if search:
-				result = df[df['jina'].str.contains(search, case=False)]
-				st.dataframe(result)			
-	    with tab3:
-			st.header("Badili Deni la Mwanafunzi")
-			student_to_edit = st.selectbox("Chagua Mwanafunzi", df['namba'])
-			current_debt = int(df[df['deni']==student_to_edit]['deni'].values[0])
-			new_debt = st.number_input("Weka Deni Jipya", value=int(df[df['namba']==student_to_edit]['deni'].values[0]))
-			if st.button("Hifadhi Mabadiliko"):
-				df.loc[df['namba'] == student_to_edit, 'deni'] = new_debt
-				st.session_state.df = df
-				st.success("Imesasishwa!")
+	if user_type == "Mzazi":
+		namba = st.text_input("Namba ya simu ya Mzazi", " ")
+		password = st.text_input("Password", type="password")
+		if st.button("Ingia"):
+			if namba in st.session_state.users and st.session_state.users[namba]['password']==password:
+				st.session_state.logged_in = True
+				st.session_state.user = namba
+				st.session_state.type = "Mkuu"
+				st.rerun()
+		   else:
+			    st.error("password sio sahihi")
 
-    elif password:
-        st.error  ("password sio Sahihi")
+else:
+	# 4. PORTAL YA MZAZI
+	if st.session_state.type == "Mzazi":
+		st.title("Portal ya Mzazi")
+		namba_mzazi = st.sesaion.user
+		Watoto = df[df['namba_mzazi'] == namba_mzazi]
+		
+		with st.expander("⚙️ Badili Password yako"):
+            pass_mpya = st.text_input("Weka Password Mpya", type="password")
+            if st.button("Hifadhi Password"):
+                st.session_state.users[namba_mzazi]['password'] = pass_mpya
+                st.success("Password imebadilishwa!")
+
+       for idx, mtoto in watoto.iterrows():
+           st.subheader(f"{mtoto['jina']} - {mtoto['darasa']}")
+           st.metric("Deni la Sasa", f"Tsh {mtoto['deni']:,}")
+           amount = st.number_input("kiasi cha kulipa", min_value=1000, max_value=int(mtoto['deni'], key=mtoto['namba']))
+           if st.button(f"Lipa Tsh {amount:,} Sasa", key=f"btn {mtoto['namba']}", type="primary"):
+               ref = f"RCPT {random.randint(10000,99999)}"
+               df.at[idx, 'deni'] -= amount
+               df.at[idx, 'malipo_yaliyofanyika'] +=
+
+
+
 
 st.write("---")
 st.caption("System imetengenezwa na UNBREAKABLE TECH. Shule ndio msimamizi wa fedha na data zote")
