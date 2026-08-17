@@ -14,7 +14,7 @@ if 'users' not in st.session_state:
 		'admin': {'password': 'admin123', 'type': 'Mkuu'}
 	}
 #----DATA YA DEMO----
-if 'df' not in st.session_state:
+if 'df' not in  st.session_state:
 	st.session_state.df = pd.DataFrame({
 	  'namba': ['STD001', 'STD002', 'STD003'],
 	  'jina': ['Juma Ali', 'Asha Mohamed' 'Peter John'],
