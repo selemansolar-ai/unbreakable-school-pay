@@ -94,11 +94,11 @@ if st.button("Toka"):
 	st.session_state.logged_in = False
 	st.rerun()
 
-    #ADMIN PANEL
-	elif:
-		st.session_state.type == "Mkuu"
-		st.title("🧑‍💼 ADMIN PANEL")
-		tab1, tab2, tab3 = st.tabs(["📊 Ripoti", "➕ Ongeza Mzazi", "⚙️ Badili Password"])
+#ADMIN PANEL
+elif:
+	st.session_state.type == "Mkuu"
+	st.title("🧑‍💼 ADMIN PANEL")
+	tab1, tab2, tab3 = st.tabs(["📊 Ripoti", "➕ Ongeza Mzazi", "⚙️ Badili Password"])
 		
 		with tab1:
 			st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
