@@ -107,7 +107,7 @@ elif st.session_state.type == "Mkuu":
 		namba_mpya = st.text_input("Namba ya Mzazi +255..")
 		mtoto_namba = st.selectbox("Muunganishe na Mwanafunzi", df['namba'])
 		if st.button("Ongeza Mzazi"):
-			st.session_state.users[namba_mpya] = {'password:  '1234', 'type': 'Mzazi'}
+			st.session_state.users[namba_mpya] = {'password: 1234, 'type': 'Mzazi'}
 			df.loc[df['namba'] ==  mtoto_namba, 'namba_mzazi'] = namba_mpya
 			st.session_state.df = df
 			st.success(f"Mzazi {namba_mpya} imeongezwa! Mwambie aingie na password: 1234")
