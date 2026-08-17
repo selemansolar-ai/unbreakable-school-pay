@@ -103,7 +103,7 @@ elif st.session_state.type == "Mkuu":
 		st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
 		st.dataframe(df, use_container_width=True)
 
-    with tab2: #Hapa admin anafungulia wazazi
+    with tab2:
 		st.header("Ongeza Mzazi Mpya")
 		namba_mpya = st.text_input("Namba ya Mzazi +255..")
 		mtoto_namba = st.selectbox("Muunganishe na Mwanafunzi"), df['namba'])
@@ -113,7 +113,7 @@ elif st.session_state.type == "Mkuu":
 			st.session_state.df = df
 			st.success(f"Mzazi {namba_mpya} imeongezwa! Mwambie aingie na password: 1234")
 
-        with tab3:
+ with tab3:
 		
 
 
