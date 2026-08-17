@@ -111,10 +111,15 @@ elif st.session_state.type == "Mkuu":
 			df.loc[df['namba'] ==  mtoto_namba, 'namba_mzazi'] = namba_mpya
 			st.session_state.df = df
 			st.success(f"Mzazi {namba_mpya} imeongezwa! Mwambie aingie na password: 1234")
-		
+	with tab3:
+		pass_mpya = st.text_input("Weka Password Mpya ya Admin", type="password")
+		if st.button("Hifadhi Password ya Admmin"):
+			st.session_state.users['admin']['password']="pass_mpya"
+			st.success("Password ya Admin imebadilishwa!")
 
-
-
+   if st.button("Toka"):
+	   st.session_state..logged_in = False
+	   stz.rerun()
 
 st.write("---")
 st.caption("System imetengenezwa na UNBREAKABLE TECH. Shule ndio msimamizi wa fedha na data zote")
