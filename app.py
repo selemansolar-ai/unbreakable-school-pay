@@ -60,7 +60,7 @@ if not st.session_state.logged_in:
 				st.session_state.user = namba
 				st.session_state.type = "Mkuu"
 				st.rerun()
-		   else:
+		    else:
 			    st.error("password sio sahihi")
 
 else:
