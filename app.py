@@ -95,8 +95,7 @@ if st.button("Toka"):
 	st.rerun()
 
 #ADMIN PANEL
-elif:
-	st.session_state.type == "Mkuu"
+				elif st.session_state.type == "Mkuu":
 	st.title("🧑‍💼 ADMIN PANEL")
 	tab1, tab2, tab3 = st.tabs(["📊 Ripoti", "➕ Ongeza Mzazi", "⚙️ Badili Password"])
 		
