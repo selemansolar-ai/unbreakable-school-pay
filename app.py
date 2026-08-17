@@ -11,7 +11,7 @@ st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon="🏫", layout
 # DATABASE
 if 'users' not in st.session_state:
 	st.session_state.users = {
-		'admin': {'password': 'admin123', 'type': 'Mkuu}
+		'admin': {'password': 'admin123', 'type': 'Mkuu'}
 	}
 #----DATA YA DEMO----
 if 'df' not in st.session_state:
