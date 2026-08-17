@@ -74,7 +74,7 @@ else:
 			pass_mpya = st.text_input("Weka Password Mpya", type="password")
 			if st.button("Hifadh Password"):
 				st.session_state.users[namba_mzazi]['password'] = pass_mpya
-                st.success("Password imebadilishwa!")
+				st.success("Password imebadilishwa!")
 
        for idx, mtoto in watoto.iterrows():
            st.subheader(f"{mtoto['jina']} - {mtoto['darasa']}")
