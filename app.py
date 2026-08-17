@@ -83,7 +83,39 @@ else:
            if st.button(f"Lipa Tsh {amount:,} Sasa", key=f"btn {mtoto['namba']}", type="primary"):
                ref = f"RCPT {random.randint(10000,99999)}"
                df.at[idx, 'deni'] -= amount
-               df.at[idx, 'malipo_yaliyofanyika'] +=
+               df.at[idx, 'malipo_yaliyofanyika'] += amount
+			   st.session_state.df = df
+			   salio_jipya = df.at[idx, 'deni']
+			   st.success(f"✅ Malipo yamefanikiwa! Ref: {ref}")
+			   pdf_data = tengeneza_risiti(ref, mtoto['jina'], amount, salio_jipya)
+			   st.download_button("📄Pakua Risiti PDF", data=pdf_data, file_name=f"risiti_{ref}.pdf")
+
+      if st.button("Toka"):
+		  st.session_state.logged_in = False
+		  st.rerun()
+
+    #ADMIN PANEL
+	elif:
+		st.session_state.type == "Mkuu"
+		st.title("🧑‍💼 ADMIN PANEL")
+		tab1, tab2, tab3 = st.tabs(["📊 Ripoti", "➕ Ongeza Mzazi", "⚙️ Badili Password"])
+		
+		with tab1:
+			st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
+			st.dataframe(df, use_container_width=True)
+
+        with tab2: #Hapa admin anafungulia wazaI
+			st.header("Ongeza Mzazi Mpya")
+			namba_mpya = st.text_input("Namba ya Mzazi +255..")
+			mtoto_namba = st.selectbox("Muunganishe na Mwanafunzi"), df['namba'])
+			if st.button("Ongeza Mzazi"):
+				st.session_state.users[namba_mpya] = {'password:  '1234', 'type': 'Mzazi'}
+				df.loc[df['namba'] ==  mtoto_namba, 'namba_mzazi'] = namba_mpya
+				st.session_state.df = df
+				st.success(f"Mzazi {namba_mpya} imeongezwa! Mwambie aingie na password: 1234")
+
+        with tab3:
+		
 
 
 
