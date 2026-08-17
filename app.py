@@ -71,9 +71,9 @@ else:
 		Watoto = df[df['namba_mzazi'] == namba_mzazi]
 		
 		with st.expander("⚙️ Badili Password yako"):
-            pass_mpya = st.text_input("Weka Password Mpya", type="password")
-            if st.button("Hifadhi Password"):
-                st.session_state.users[namba_mzazi]['password'] = pass_mpya
+			pass_mpya = st.text_input("Weka Password Mpya", type="password")
+			if st.button("Hifadh Password"):
+				st.session_state.users[namba_mzazi]['password'] = pass_mpya
                 st.success("Password imebadilishwa!")
 
        for idx, mtoto in watoto.iterrows():
