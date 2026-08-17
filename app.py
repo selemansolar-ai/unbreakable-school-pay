@@ -35,7 +35,7 @@ def tengeneza_risiti(red, jina, kiasi, salio):
 	pdf.cell(0, 10, f"RISITI # : {ref}", 0, 1, 'C')
 	pdf.ln(5)
 	pdf.set_font("Arial", size=12)
-	pdf..cell(0, 10, f"Tarehe: {datetime.date.today()}", 0, 1)
+	pdf.cell(0, 10, f"Tarehe: {datetime.date.today()}", 0, 1)
 	pdf.cell(0, 10, f"Mwanafunzi: {jina}", 0, 1)
 	pdf.cell(0, 10, f"kiasi: Tsh {kiasi:, }", 0, 1)
 	pdf.cell(0, 10, f"Salio Jipya: Tsh {salio:,}", 0,1)
