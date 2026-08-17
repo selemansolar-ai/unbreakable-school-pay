@@ -16,12 +16,12 @@ if 'users' not in st.session_state:
 #----DATA YA DEMO----
 if 'df' not in  st.session_state:
 	st.session_state.df = pd.DataFrame({
-	  'namba': ['STD001', 'STD002', 'STD003'],
-	  'jina': ['Juma Ali', 'Asha Mohamed' 'Peter John'],
-	  'darasa': ['Darasa la 7A', 'Darasa la 3B', 'Darasa la 5C'],
-	  'deni': [150000, 750000, 200000],
-	  'namba_mzazi': [+255775049026, +255774792548, +255687093070],
-	  'malipo_yaliyofanyika': [0, 250000, 0]
+		'namba': ['STD001', 'STD002', 'STD003'],
+		'jina': ['Juma Ali', 'Asha Mohamed' 'Peter John'],
+		'darasa': ['Darasa la 7A', 'Darasa la 3B', 'Darasa la 5C'],
+		'deni': [150000, 750000, 200000],
+		'namba_mzazi': [+255775049026, +255774792548, +255687093070],
+		'malipo_yaliyofanyika': [0, 250000, 0]
 	})
 
 df = st.session_state.df
