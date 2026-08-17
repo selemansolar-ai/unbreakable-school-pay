@@ -115,8 +115,8 @@ elif st.session_state.type == "Mkuu":
 		pass_mpya = st.text_input("Weka Password Mpya ya Admin", type="password")
 		if st.button("Hifadhi Password ya Admmin"):
 			st.session_state.users['admin']['password']="pass_mpya"
-			st.success("Password ya Admin imebadilishwa!")
-        if st.button("Toka"):
+			st.success("Password ya Admin imebadilisshwa!")
+if st.button("Toka"):
 		  st.session_state..logged_in = False
 	      st.rerun()
 
