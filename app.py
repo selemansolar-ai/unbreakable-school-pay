@@ -80,7 +80,7 @@ if not st.session_state.logged_in:
 
 else:
 	# 4. PORTAL YA MZAZI
-	if st.session_state.type == "Mzazi":
+	if st.session_state.type = "Mzazi":
 		st.title("Portal ya Mzazi")
 		namba_mzazi = st.session_state.user
 		watoto == df[df['namba_mzazi'] == namba_mzazi]
