@@ -27,10 +27,10 @@ if 'df' not in st.session_state:
 df = st.session_state.df
 
 # FUNCTION YA KUTENGENEZA PDF
-def tengeneza_risiti(red, jina, kiasi, salio):
+def tengeneza_risiti(ref, jina, kiasi, salio):
 	pdf = FPDF()
 	pdf.add_page()
-	pdf.set_front("Arial", 'B', 16)
+	pdf.set_font("Arial", 'B', 16)
 	pdf.cell(0, 10, "UNBREAKABLE SCHOOL", 0, 1, 'C')
 	pdf.cell(0, 10, f"RISITI # : {ref}", 0, 1, 'C')
 	pdf.ln(5)
@@ -41,7 +41,7 @@ def tengeneza_risiti(red, jina, kiasi, salio):
 	pdf.cell(0, 10, f"Salio Jipya: Tsh {salio:,}", 0,1)
 	buffer = io.BytesIO()
 	pdf.output(buffer)
-	return buffer.getvalues()
+	return buffer.getvalue()
 
 # LOG IN PAGE
 if 'logged_in' not in st.session_state:
