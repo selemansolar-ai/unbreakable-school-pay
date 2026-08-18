@@ -99,7 +99,7 @@ else:
 		st.title("🧑‍💼 ADMIN PANEL")
 		tab1, tab2, tab3 = st.tabs(["📊 Ripoti", "➕ Ongeza Mzazi", "⚙️ Badili Password"])
 		
-	    with tab1:
+		with tab1:
 			st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
 		    st.dataframe(df, use_container_width=True)
 	    with tab2:
