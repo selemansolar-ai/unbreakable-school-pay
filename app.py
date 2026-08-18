@@ -68,7 +68,7 @@ else:
 	if st.session_state.type == "Mzazi":
 		st.title("Portal ya Mzazi")
 		namba_mzazi = st.session_state.user
-		Watoto = df[df['namba_mzazi'] == namba_mzazi]
+		watoto == df[df['namba_mzazi'] == namba_mzazi]
 		
 		with st.expander("⚙️ Badili Password yako"):
 			pass_mpya = st.text_input("Weka Password Mpya", type="password")
