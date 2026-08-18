@@ -13,14 +13,14 @@ if 'users' not in st.session_state:
 	st.session_state.users = {
 		'admin': {'password': 'admin123', 'type': 'Mkuu'}
 	}
-#----DATA YA DEMO----
-if 'df' not in  st.session_state:
+
+if 'df' not in st.session_state:
 	st.session_state.df = pd.DataFrame({
 		'namba': ['STD001', 'STD002', 'STD003'],
-		'jina': ['Juma Ali', 'Asha Mohamed' 'Peter John'],
+		'jina': ['Juma Ali', 'Asha Mohamed', 'Peter John'],
 		'darasa': ['Darasa la 7A', 'Darasa la 3B', 'Darasa la 5C'],
-		'deni': [150000, 750000, 200000],
-		'namba_mzazi': [+255775049026, +255774792548, +255687093070],
+		'deni': [150000, 750000, 2000000],
+		'namba_mzazi': [+255774792548, +255775049026,  +255687093070],
 		'malipo_yaliyofanyika': [0, 250000, 0]
 	})
 
