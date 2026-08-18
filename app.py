@@ -97,28 +97,28 @@ else:
 #ADMIN PANEL
 	elif st.session_state.type == "Mkuu":
 		st.title("🧑‍💼 ADMIN PANEL")
-	tab1, tab2, tab3 = st.tabs(["📊 Ripoti", "➕ Ongeza Mzazi", "⚙️ Badili Password"])
+	    tab1, tab2, tab3 = st.tabs(["📊 Ripoti", "➕ Ongeza Mzazi", "⚙️ Badili Password"])
 		
-	with tab1:
-		st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
-		st.dataframe(df, use_container_width=True)
-	with tab2:
-		st.header("Ongeza Mzazi Mpya")
-		namba_mpya = st.text_input("Namba ya Mzazi +255..")
-		mtoto_namba = st.selectbox("Muunganishe na Mwanafunzi", df['namba'])
-		if st.button("Ongeza Mzazi"):
-			st.session_state.users[namba_mpya] = {'password': 1234, 'type': 'Mzazi'}
-			df.loc[df['namba'] ==  mtoto_namba, 'namba_mzazi'] = namba_mpya
-			st.session_state.df = df
-			st.success(f"Mzazi {namba_mpya} imeongezwa! Mwambie aingie na password: 1234")
-	with tab3:
-		pass_mpya = st.text_input("Weka Password Mpya ya Admin", type="password")
-		if st.button("Hifadhi Password ya Admmin"):
-			st.session_state.users['admin']['password']="pass_mpya"
-			st.success("Password ya Admin imebadilisshwa!")
-if st.button("Toka"):
-	st.session_state.logged_in = False
-	st.rerun()
+	    with tab1:
+			st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
+		    st.dataframe(df, use_container_width=True)
+	    with tab2:
+			st.header("Ongeza Mzazi Mpya")
+		    namba_mpya = st.text_input("Namba ya Mzazi +255..")
+		    mtoto_namba = st.selectbox("Muunganishe na Mwanafunzi", df['namba'])
+		    if st.button("Ongeza Mzazi"):
+				st.session_state.users[namba_mpya] = {'password': 1234, 'type': 'Mzazi'}
+			    df.loc[df['namba'] ==  mtoto_namba, 'namba_mzazi'] = namba_mpya
+			    st.session_state.df = df
+			    st.success(f"Mzazi {namba_mpya} imeongezwa! Mwambie aingie na password: 1234")
+	    with tab3:
+			pass_mpya = st.text_input("Weka Password Mpya ya Admin", type="password")
+		    if st.button("Hifadhi Password ya Admmin"):
+				st.session_state.users['admin']['password']="pass_mpya"
+			    st.success("Password ya Admin imebadilisshwa!")
+       if st.button("Toka"):
+		   st.session_state.logged_in = False
+		   st.rerun()
 
 st.write("---")
 st.caption("System imetengenezwa na UNBREAKABLE TECH. Shule ndio msimamizi wa fedha na data zote")
