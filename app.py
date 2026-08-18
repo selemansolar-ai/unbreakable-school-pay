@@ -39,9 +39,8 @@ def tengeneza_risiti(ref, jina, kiasi, salio):
 	pdf.cell(0, 10, f"Mwanafunzi: {jina}", 0, 1)
 	pdf.cell(0, 10, f"kiasi: Tsh {kiasi:,}", 0, 1)
 	pdf.cell(0, 10, f"Salio Jipya: Tsh {salio:,}", 0,1)
-	buffer = io.BytesIO()
-	pdf.output(buffer)
-	return buffer.getvalue()
+	pdf_bytes = pdf.output(dest='S').encode('latin-1')
+	return pdf_bytes
 
 # LOG IN PAGE
 if 'logged_in' not in st.session_state:
