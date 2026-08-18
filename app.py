@@ -104,13 +104,13 @@ else:
 			st.dataframe(df, use_container_width=True)
 		with tab2:
 			st.header("Ongeza Mzazi Mpya")
-		    namba_mpya = st.text_input("Namba ya Mzazi +255..")
-		    mtoto_namba = st.selectbox("Muunganishe na Mwanafunzi", df['namba'])
-		    if st.button("Ongeza Mzazi"):
+			namba_mpya = st.text_input("Namba ya Mzazi +255..")
+			mtoto_namba = st.selectbox("Muunganishe na Mwanafunzi", df['namba'])
+			if st.button("Ongeza Mzazi"):
 				st.session_state.users[namba_mpya] = {'password': 1234, 'type': 'Mzazi'}
-			    df.loc[df['namba'] ==  mtoto_namba, 'namba_mzazi'] = namba_mpya
-			    st.session_state.df = df
-			    st.success(f"Mzazi {namba_mpya} imeongezwa! Mwambie aingie na password: 1234")
+				df.loc[df['namba'] ==  mtoto_namba, 'namba_mzazi'] = namba_mpya
+				st.session_state.df = df
+				st.success(f"Mzazi {namba_mpya} imeongezwa! Mwambie aingie na password: 1234")
 	    with tab3:
 			pass_mpya = st.text_input("Weka Password Mpya ya Admin", type="password")
 		    if st.button("Hifadhi Password ya Admmin"):
