@@ -39,7 +39,7 @@ def tengeneza_risiti(ref, jina, kiasi, salio):
 	pdf.cell(0, 10, f"Mwanafunzi: {jina}", 0, 1)
 	pdf.cell(0, 10, f"kiasi: Tsh {kiasi:,}", 0, 1)
 	pdf.cell(0, 10, f"Salio Jipya: Tsh {salio:,}", 0,1)
-	buffer = io.bytesIO()
+	buffer = io.BytesIO()
 	pdf.output(buffer)
 	return buffer.getvalue()
 
