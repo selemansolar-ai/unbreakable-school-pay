@@ -89,9 +89,9 @@ else:
 				st.success(f"✅ Malipo yamefanikiwa! Ref: {ref}")
 				pdf_data = tengeneza_risiti(ref, mtoto['jina'], amount, salio_jipya)
 				st.download_button("📄Pakua Risiti PDF", data=pdf_data, file_name=f"risiti_{ref}.pdf")
-
-        if st.button("Toka"):
-		    st.session_state.logged_in = False
+		
+		if st.button("Toka"):
+			st.session_state.logged_in = False
 	        st.rerun()
 
 #ADMIN PANEL
