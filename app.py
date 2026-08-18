@@ -11,7 +11,10 @@ st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon="🏫", layout
 # DATABASE
 if 'users' not in st.session_state:
 	st.session_state.users = {
-		'admin': {'password': 'admin123', 'type': 'Mkuu'}
+		'admin': {'password': 'admin123', 'type': 'Mkuu'},
+		'+255774792548': {'password': '1234', 'type': 'Mzazi'},
+		'+255775049026': {'password': '1234', 'type': 'Mzazi'},
+		'+255687093070': {'password': '1234', 'type': 'Mzazi'}
 	}
 
 if 'df' not in st.session_state:
@@ -20,7 +23,7 @@ if 'df' not in st.session_state:
 		'jina': ['Juma Ali', 'Asha Mohamed', 'Peter John'],
 		'darasa': ['Darasa la 7A', 'Darasa la 3B', 'Darasa la 5C'],
 		'deni': [150000, 750000, 2000000],
-		'namba_mzazi': [+255774792548, +255775049026,  +255687093070],
+		'namba_mzazi': ['+255774792548', '+255775049026',  '+255687093070'],
 		'malipo_yaliyofanyika': [0, 250000, 0]
 	})
 
