@@ -37,7 +37,7 @@ def tengeneza_risiti(ref, jina, kiasi, salio):
 	pdf.set_font("Arial", size=12)
 	pdf.cell(0, 10, f"Tarehe: {datetime.date.today()}", 0, 1)
 	pdf.cell(0, 10, f"Mwanafunzi: {jina}", 0, 1)
-	pdf.cell(0, 10, f"kiasi: Tsh {kiasi:, }", 0, 1)
+	pdf.cell(0, 10, f"kiasi: Tsh {kiasi:,}", 0, 1)
 	pdf.cell(0, 10, f"Salio Jipya: Tsh {salio:,}", 0,1)
 	buffer = io.BytesIO()
 	pdf.output(buffer)
