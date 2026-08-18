@@ -52,7 +52,7 @@ if not st.session_state.logged_in:
 	user_type = st.radio("Ingia kama:", ["Mzazi", "Mkuu wa Shule"])
 	
 	if user_type == "Mzazi":
-		namba = st.text_input("Namba ya simu ya Mzazi", " ")
+		namba = st.text_input("Namba ya simu ya Mzazi", "+255...")
 		password = st.text_input("Password", type="password")
 		if st.button("Ingia"):
 			if namba in st.session_state.users and st.session_state.users[namba]['password']==password:
