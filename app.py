@@ -92,7 +92,7 @@ else:
 		
 		if st.button("Toka"):
 			st.session_state.logged_in = False
-	        st.rerun()
+			st.rerun()
 
 #ADMIN PANEL
 elif st.session_state.type == "Mkuu":
