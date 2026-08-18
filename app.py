@@ -76,8 +76,8 @@ else:
 				st.session_state.users[namba_mzazi]['password'] = pass_mpya
 				st.success("Password imebadilishwa!")
 
-        for idx, mtoto in watoto.iterrows():
-		    st.subheader(f"{mtoto['jina']} - {mtoto['darasa']}")
+      for idx, mtoto in watoto.iterrows():
+		  st.subheader(f"{mtoto['jina']} - {mtoto['darasa']}")
 	        st.metric("Deni la Sasa", f"Tsh {mtoto['deni']:,}")
 	        amount = st.number_input("kiasi cha kulipa", min_value=1000, max_value=int(mtoto['deni'], key=mtoto['namba']))
 	        if st.button(f"Lipa Tsh {amount:,} Sasa", key=f"btn {mtoto['namba']}", type="primary"):
