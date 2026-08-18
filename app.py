@@ -63,7 +63,7 @@ if not st.session_state.logged_in:
 			else:
 			    st.error("password au namba sio sahihi")
 	else:
-		namba = "Mkuu"
+		namba = "admin"
 		password = st.text_input("Password", type="password")
 		if st.button("Ingia"):
 			if namba in st.session_state.users and st.session_state.users[namba]['password']==password:
