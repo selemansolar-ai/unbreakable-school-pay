@@ -58,10 +58,22 @@ if not st.session_state.logged_in:
 			if namba in st.session_state.users and st.session_state.users[namba]['password']==password:
 				st.session_state.logged_in = True
 				st.session_state.user = namba
-				st.session_state.type = "Mkuu"
+				st.session_state.type = "Mzazi"
 				st.rerun()
 		else:
-			    st.error("password sio sahihi")
+			    st.error("password au namba sio sahihi")
+	else:
+		namba = "Mkuu"
+		password = st.text_input("Password", type="password")
+		if st.button("Ingia"):
+			if namba in st.session_state.users and st.session_state.users[namba]['password']==password:
+				st.session_state.logged_in = True
+				st.session_state.user = namba
+				st.session_state.type = "Mkuu"
+				st.rerun()
+			else:
+				st.error("Password Sio Sahihi")
+			    
 
 else:
 	# 4. PORTAL YA MZAZI
