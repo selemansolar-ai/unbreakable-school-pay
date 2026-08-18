@@ -82,13 +82,13 @@ else:
 			amount = st.number_input("kiasi cha kulipa", min_value=1000, max_value=int(mtoto['deni'], key=mtoto['namba']))
 			if st.button(f"Lipa Tsh {amount:,} Sasa", key=f"btn {mtoto['namba']}", type="primary"):
 				ref = f"RCPT {random.randint(10000,99999)}"
-		        df.at[idx, 'deni'] -= amount
-		        df.at[idx, 'malipo_yaliyofanyika'] += amount
-		        st.session_state.df = df
-		        salio_jipya = df.at[idx, 'deni']
-		        st.success(f"✅ Malipo yamefanikiwa! Ref: {ref}")
-		        pdf_data = tengeneza_risiti(ref, mtoto['jina'], amount, salio_jipya)
-		        st.download_button("📄Pakua Risiti PDF", data=pdf_data, file_name=f"risiti_{ref}.pdf")
+				df.at[idx, 'deni'] -= amount
+				df.at[idx, 'malipo_yaliyofanyika'] += amount
+				st.session_state.df = df
+				salio_jipya = df.at[idx, 'deni']
+				st.success(f"✅ Malipo yamefanikiwa! Ref: {ref}")
+				pdf_data = tengeneza_risiti(ref, mtoto['jina'], amount, salio_jipya)
+				st.download_button("📄Pakua Risiti PDF", data=pdf_data, file_name=f"risiti_{ref}.pdf")
 
         if st.button("Toka"):
 		    st.session_state.logged_in = False
