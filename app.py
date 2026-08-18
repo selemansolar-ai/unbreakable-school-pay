@@ -67,7 +67,7 @@ else:
 	# 4. PORTAL YA MZAZI
 	if st.session_state.type == "Mzazi":
 		st.title("Portal ya Mzazi")
-		namba_mzazi = st.sesaion.user
+		namba_mzazi = st.session_state.user
 		Watoto = df[df['namba_mzazi'] == namba_mzazi]
 		
 		with st.expander("⚙️ Badili Password yako"):
