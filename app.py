@@ -102,7 +102,7 @@ else:
 		with tab1:
 			st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
 			st.dataframe(df, use_container_width=True)
-	    with tab2:
+		with tab2:
 			st.header("Ongeza Mzazi Mpya")
 		    namba_mpya = st.text_input("Namba ya Mzazi +255..")
 		    mtoto_namba = st.selectbox("Muunganishe na Mwanafunzi", df['namba'])
