@@ -5,13 +5,14 @@ import random
 import datetime
 from fpdf import FPDF
 import io
+import gspread
 from google.oauth2.service_account import Credentials
 
 st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon="🏫", layout="wide")
 
 #Unganisha na google sheet
 scope = ["https://www.googleapis.com/auth/spreadsheets"]
-creds = Credentials.from_services_account_info(st.secrets["gcp_service_account"], scope=scope)
+creds = Credentials.from_service_account_info(st.secrets["gcp_service_account"], scope=scope)
 client = gspread.authorize(creds)
 
 SHEET_NAME = "UNBREAKABLE_SCHOOL_DB"
