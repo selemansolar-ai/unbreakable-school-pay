@@ -5,24 +5,31 @@ import random
 import datetime
 from fpdf import FPDF
 import io
+from google.oauth2.service_account import Credentials
 
 st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon="🏫", layout="wide")
 
-# DATABASE
-st.session_state.users = {
-	'admin': {'password': 'admin123', 'type': 'Mkuu'},
-	'+255774792548': {'password': '1234', 'type': 'Mzazi'},
-	'+255775049026': {'password': '1234', 'type': 'Mzazi'},
-	'+255687093070': {'password': '1234', 'type': 'Mzazi'}
-}
-st.session_state.df = pd.DataFrame({
-	'namba': ['STD001', 'STD002', 'STD003'],
-	'jina': ['Juma Ali', 'Asha Mohamed', 'Peter John'],
-	'darasa': ['Darasa la 7A', 'Darasa la 3B', 'Darasa la 5C'],
-	'deni': [150000, 750000, 2000000],
-	'namba_mzazi': ['+255774792548', '+255775049026',  '+255687093070'],
-	'malipo_yaliyofanyika': [0, 250000, 0]
-})
+#Unganisha na google sheet
+scope = ["https://www.googleapis.com/auth/spreadsheets"]
+creds = Credentials.from_services_account_info(st.secrets["gcp_service_account"], scope=scope)
+client = gspread.authorize(creds)
+
+SHEET_NAME = "UNBREAKABLE_SCHOOL_DB"
+
+@st.cache_data(ttl=10)
+def load_data():
+	sheet = client.open(SHEET_NAME)
+	df_wanafunzi = pd.DataFrame(sheet.worksheet("wanafunzi").get_all_records())
+	df_users = pd.DataFrame(sheet.worksheet("users").get_all_records())
+	return df_wanafunzi, df_users
+
+def save_data(df_wanafunzi, df_users):
+	sheet = client.open(SHEET_NAME)
+	sheet.worksheet("wanafunzi").update([df_wanafunzi.columns.vvalues.tilist()] + df_wanafunzi.values.tolist())
+	sheet.worksheet("users").update([df_users.columns.values.tolist()] + df_users.values.tolist())
+
+df, users = load_data()
+
 #DATABASE YA MALIPO
 if 'transactions' not in st.session_state:
 	st.session_state.transactions = pd.DataFrame({
