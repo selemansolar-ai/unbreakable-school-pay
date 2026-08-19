@@ -23,6 +23,16 @@ st.session_state.df = pd.DataFrame({
 	'namba_mzazi': ['+255774792548', '+255775049026',  '+255687093070'],
 	'malipo_yaliyofanyika': [0, 250000, 0]
 })
+#DATABASE YA MALIPO
+if 'transactions' not in st.session_state:
+	st.session_state.transactions = pd.DataFrame({
+		'ref': [],
+		'tarehe': [],
+		'namba_mtoto': [],
+		'namba_mzazi': [],
+		'kiasi': [],
+		'salio_jipya': []
+	})
 
 df = st.session_state.df
 
@@ -96,6 +106,16 @@ else:
 				df.at[idx, 'deni'] -= amount
 				df.at[idx, 'malipo_yaliyofanyika'] += amount
 				st.session_state.df = df
+				new_transaction = pd.DataFrame([{
+					'ref': ref,
+					'tarehe': datetime.date.today(),
+					'namba_mtoto': mtoto['namba'],
+					'jina_mtoto': mtoto['jina'],
+					'namba_mzazi': namba_mzazi,
+					'kiasi': amount,
+					'salio_baada': salio_jipya
+				}])
+				st.session_state.transactions = pd.concat([st.session_state.transactions, new_transaction], ignore_index=True)
 				salio_jipya = df.at[idx, 'deni']
 				st.success(f"✅ Malipo yamefanikiwa! Ref: {ref}")
 				pdf_data = tengeneza_risiti(ref, mtoto['jina'], amount, salio_jipya)
@@ -112,6 +132,15 @@ else:
 		
 		with tab1:
 			st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
+			st.metric("Jumla ya Malipo yaliyofanyika", f"Tsh {df['malipo_yaliyofanyika'].sum():,}")
+
+			subheader("📋 Historia ya Malipo")
+			if st.session_state.transactions.empty:
+				st.info("Bado hakuna malipo yaliyofanyika")
+			else:
+				st.dataframe(st.session_state.transactions.sort_values('tarehe', ascending=False), use_container_width=True)
+
+			st.subheader("🧑‍🎓 Hali ya Wanafunzi")
 			st.dataframe(df, use_container_width=True)
 		with tab2:
 			st.header("Ongeza Mzazi Mpya")
