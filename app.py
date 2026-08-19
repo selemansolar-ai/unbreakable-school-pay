@@ -133,7 +133,7 @@ else:
 			st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
 			st.metric("Jumla ya Malipo yaliyofanyika", f"Tsh {df['malipo_yaliyofanyika'].sum():,}")
 
-			subheader("📋 Historia ya Malipo")
+			st.subheader("📋 Historia ya Malipo")
 			if st.session_state.transactions.empty:
 				st.info("Bado hakuna malipo yaliyofanyika")
 			else:
