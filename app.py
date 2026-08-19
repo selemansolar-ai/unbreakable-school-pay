@@ -105,6 +105,7 @@ else:
 				ref = f"RCPT {random.randint(10000,99999)}"
 				df.at[idx, 'deni'] -= amount
 				df.at[idx, 'malipo_yaliyofanyika'] += amount
+				salio_jipya = df.at[idx, 'deni']
 				st.session_state.df = df
 				new_transaction = pd.DataFrame([{
 					'ref': ref,
@@ -116,7 +117,6 @@ else:
 					'salio_baada': salio_jipya
 				}])
 				st.session_state.transactions = pd.concat([st.session_state.transactions, new_transaction], ignore_index=True)
-				salio_jipya = df.at[idx, 'deni']
 				st.success(f"✅ Malipo yamefanikiwa! Ref: {ref}")
 				pdf_data = tengeneza_risiti(ref, mtoto['jina'], amount, salio_jipya)
 				st.download_button("📄Pakua Risiti PDF", data=pdf_data, file_name=f"risiti_{ref}.pdf")
@@ -129,7 +129,6 @@ else:
 	elif st.session_state.type == "Mkuu":
 		st.title("🧑‍💼 ADMIN PANEL")
 		tab1, tab2, tab3 = st.tabs(["📊 Ripoti", "➕ Ongeza Mzazi", "⚙️ Badili Password"])
-		
 		with tab1:
 			st.metric("Jumla ya Madeni", f"Tsh {df['deni'].sum():,}")
 			st.metric("Jumla ya Malipo yaliyofanyika", f"Tsh {df['malipo_yaliyofanyika'].sum():,}")
