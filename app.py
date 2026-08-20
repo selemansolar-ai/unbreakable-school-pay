@@ -13,7 +13,7 @@ st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon="🏫", layout
 #Unganisha na google sheet
 scope = [
 	"https://www.googleapis.com/auth/spreadsheets",
-	"https//:www.googleapis.com/auth/drive"
+	"https://www.googleapis.com/auth/drive"
 ]
 creds = Credentials.from_service_account_info(
 	st.secrets["gcp_service_account"], 
