@@ -11,8 +11,12 @@ from google.oauth2.service_account import Credentials
 st.set_page_config(page_title="UNBREAKABLE SCHOOL PAY", page_icon="🏫", layout="wide")
 
 #Unganisha na google sheet
+scope = [
+	"https://www.googleapis.com/auth/spreadsheets",
+	"https:www.googleapis.com/auth/drive"
+]
 creds = Credentials.from_service_account_info(
-	st.secrets["gcp_service_account"]
+	st.secrets["gcp_service_account"], scopes=scope
 )
 client = gspread.authorize(creds)
 
