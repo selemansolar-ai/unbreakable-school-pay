@@ -83,6 +83,7 @@ if not st.session_state.logged_in:
 		namba = st.text_input("Namba ya simu ya Mzazi", "+255...")
 		password = st.text_input("Password", type="password")
 		if st.button("Ingia"):
+			namba = namba.replace("+", "")
 			if namba in st.session_state.users and st.session_state.users[namba]['password'] == password:
 				st.session_state.logged_in = True
 				st.session_state.user = namba
