@@ -65,6 +65,13 @@ def tengeneza_risiti(ref, jina, kiasi, salio):
 	pdf_bytes = pdf.output(dest='S').encode('latin-1')
 	return pdf_bytes
 
+#PAKIA DATA KUTOKA GOOGLE SHEET
+if 'wanafunzi' not in st.session_state:
+	df_wanafunzi = pd.DataFrame(sheet.worksheet("wanafunzi").get_all_records())
+	df_users = pd.DataFrame(sheet.worksheet("users").get_all_records())
+	st.session_state.users = df_users.set_index('namba').to_dict('index')
+	st.session_state.wanafunzi = df_wanafunzi
+
 # LOG IN PAGE
 if 'logged_in' not in st.session_state:
 	st.session_state.logged_in = False
@@ -77,7 +84,7 @@ if not st.session_state.logged_in:
 		namba = st.text_input("Namba ya simu ya Mzazi", "+255...")
 		password = st.text_input("Password", type="password")
 		if st.button("Ingia"):
-			if namba in st.session_state.users and st.session_state.users[namba]['password']==password:
+			if namba in st.session_state.users and st.session_state.users[namba]['password'] == password:
 				st.session_state.logged_in = True
 				st.session_state.user = namba
 				st.session_state.type = "Mzazi"
