@@ -67,10 +67,9 @@ def tengeneza_risiti(ref, jina, kiasi, salio):
 
 #PAKIA DATA KUTOKA GOOGLE SHEET
 if 'wanafunzi' not in st.session_state:
-	df_wanafunzi = pd.DataFrame(sheet.worksheet("wanafunzi").get_all_records())
-	df_users = pd.DataFrame(sheet.worksheet("users").get_all_records())
+	df, users = load_data()
 	st.session_state.users = df_users.set_index('namba').to_dict('index')
-	st.session_state.wanafunzi = df_wanafunzi
+	st.session_state.wanafunzi = df
 
 # LOG IN PAGE
 if 'logged_in' not in st.session_state:
