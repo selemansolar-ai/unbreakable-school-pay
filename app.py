@@ -68,7 +68,7 @@ def tengeneza_risiti(ref, jina, kiasi, salio):
 #PAKIA DATA KUTOKA GOOGLE SHEET
 if 'wanafunzi' not in st.session_state:
 	df, users = load_data()
-	st.session_state.users = df_users.set_index('namba').to_dict('index')
+	st.session_state.users = users.set_index('namba').to_dict('index')
 	st.session_state.wanafunzi = df
 
 # LOG IN PAGE
