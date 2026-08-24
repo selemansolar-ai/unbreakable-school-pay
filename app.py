@@ -48,7 +48,6 @@ if 'transactions' not in st.session_state:
 		'salio_jipya': []
 	})
 
-df = st.session_state.df
 
 # FUNCTION YA KUTENGENEZA PDF
 def tengeneza_risiti(ref, jina, kiasi, salio):
