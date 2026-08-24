@@ -84,6 +84,7 @@ if not st.session_state.logged_in:
 		password = st.text_input("Password", type="password")
 		if st.button("Ingia"):
 			namba = namba.replace("+", "")
+			st.write("Namba unayotafuta:", namba)
 			if namba in st.session_state.users and st.session_state.users[namba]['password'] == password:
 				st.session_state.logged_in = True
 				st.session_state.user = namba
