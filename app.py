@@ -80,6 +80,7 @@ if not st.session_state.logged_in:
 	user_type = st.radio("Ingia kama:", ["Mzazi", "Mkuu wa Shule"])
 	
 	if user_type == "Mzazi":
+		st.write("users zilizopakiwa:", list(st.session_state.users.keys()))
 		namba = st.text_input("Namba ya simu ya Mzazi", placeholder="+255...")
 		password = st.text_input("Password", type="password")
 		if st.button("Ingia"):
@@ -102,7 +103,6 @@ if not st.session_state.logged_in:
 				st.rerun()
 			else:
 				st.error("Password Sio Sahihi")
-	st.write("users zilizopakiwa", list(st.session_state.users.keys()))
 else:
 	# 4. PORTAL YA MZAZI
 	if st.session_state.type == "Mzazi":
