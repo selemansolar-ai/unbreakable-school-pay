@@ -91,8 +91,6 @@ if not st.session_state.logged_in:
 				st.rerun()
 			else:
 				st.error("password au namba sio sahihi")
-		if  namba in session_state.users:
-			st.write("password iliyopo:", st.session_state.users[namba]['password'])
 	else:
 		namba = "admin"
 		password = st.text_input("Password", type="password")
