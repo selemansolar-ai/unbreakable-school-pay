@@ -25,7 +25,7 @@ SHEET_NAME = "UNBREAKABLE_SCHOOL_DB"
 
 @st.cache_data(ttl=10)
 def load_data():
-	sheet = client.open(UNBREAKABLE_SCHOOL_DB)
+	sheet = client.open(SHEET_NAME)
 	df_wanafunzi = pd.DataFrame(sheet.worksheet("wanafunzi").get_all_records())
 	df_users = pd.DataFrame(sheet.worksheet("users").get_all_records())
 	return df_wanafunzi, df_users
