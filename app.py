@@ -90,7 +90,7 @@ if not st.session_state.logged_in:
 		if st.button("Ingia"):
 			namba_clean = normalize_namba(namba)
 			st.write("Namba unayotafuta:", namba_clean)
-			if namba_clean in st.session_state.users and st.session_state.users[namba]['password'] == password:
+			if namba_clean in st.session_state.users and st.session_state.users[namba_clean]['password'] == password:
 				st.session_state.logged_in = True
 				st.session_state.user = namba_clean
 				st.session_state.type = "Mzazi"
