@@ -85,7 +85,7 @@ if not st.session_state.logged_in:
 	
 	if user_type == "Mzazi":
 		st.write("users zilizopakiwa:", list(st.session_state.users.keys()))
-		namba = st.text_input("Namba ya simu ya Mzazi", placeholder="+255...")
+		namba = st.text_input("Namba ya simu ya Mzazi", placeholder="255...")
 		password = st.text_input("Password", type="password")
 		if st.button("Ingia"):
 			namba_clean = normalize_namba(namba)
