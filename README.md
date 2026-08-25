@@ -38,8 +38,10 @@ A simple and secure web application that allows parents to check school fees bal
 ### **GOOGLE SHEET STRUCTURE**
 The app uses 2 sheets: 'users' and 'wanafunzi'
 1.'users': namba, password, role
-2.'wanafunzi': jina, namba_mzazi, darasa, jumla_deni, malipo
+
+2.'wanafunzi': jina, namba_mzazi, darasa, jumla_madeni, malipo
 
 ### **BUILT BY**
 **UNREAKABLE TECH** - Building solutions for Tanzanian Schools
-Contact[+255687093070 WhatsApp]
+
+Contact: [+255687093070 WhatsApp]
