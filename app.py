@@ -20,7 +20,9 @@ creds = Credentials.from_service_account_info(
 	scopes=scope
 )
 client = gspread.authorize(creds)
-
+def normalize_namba(namba):
+	return str(namba).replace("+", "").replace(" ", "").strip()
+	
 SHEET_NAME = "UNBREAKABLE_SCHOOL_DB"
 
 @st.cache_data(ttl=10)
@@ -28,6 +30,8 @@ def load_data():
 	sheet = client.open(SHEET_NAME)
 	df_wanafunzi = pd.DataFrame(sheet.worksheet("wanafunzi").get_all_records())
 	df_users = pd.DataFrame(sheet.worksheet("users").get_all_records())
+	df_wanafunzi['namba_mzazi'] = df_wanafunzi['namba_mzazi'].apply(normalize_namba)
+	df_users['namba'] = df_users['namba'].apply(normalize_namba)
 	return df_wanafunzi, df_users
 
 def save_data(df_wanafunzi, df_users):
@@ -84,10 +88,11 @@ if not st.session_state.logged_in:
 		namba = st.text_input("Namba ya simu ya Mzazi", placeholder="+255...")
 		password = st.text_input("Password", type="password")
 		if st.button("Ingia"):
-			st.write("Namba unayotafuta:", namba)
-			if namba in st.session_state.users and st.session_state.users[namba]['password'] == password:
+			namba_clean = normalize_namba(namba)
+			st.write("Namba unayotafuta:", namba_clean)
+			if namba_clean in st.session_state.users and st.session_state.users[namba]['password'] == password:
 				st.session_state.logged_in = True
-				st.session_state.user = namba
+				st.session_state.user = namba_clean
 				st.session_state.type = "Mzazi"
 				st.rerun()
 			else:
