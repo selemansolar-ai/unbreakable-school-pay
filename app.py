@@ -184,4 +184,4 @@ else:
 			st.rerun()
 
 st.write("---")
-st.caption("System imetengenezwa na UNBREAKABLE TECH. Shule ndio msimamizi wa fedha na data zote")
+st.caption("System imetengenezwa na SABINI AI TECH. Shule ndio msimamizi wa fedha na data zote")
